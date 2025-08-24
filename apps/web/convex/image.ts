@@ -395,7 +395,7 @@ export const generateByPrompt = internalAction(
       });
       console.log("Image uploaded, extracting image URL");
       const urlParts = response.url.split("/");
-      const filename = urlParts[urlParts.length - 1];
+      const filename = urlParts[urlParts.length - 1].split("?")[0];
       const publicBaseUrl = process.env.R2_PUBLIC_BASE_URL as string;
       const imageUrl = `${publicBaseUrl}/${filename}`;
       console.log(`Image URL extracted: ${imageUrl}`);
@@ -435,7 +435,7 @@ export const upload = action({
     });
     console.log("Image uploaded, extracting image URL");
     const urlParts = response.url.split("/");
-    const uploadedFilename = urlParts[urlParts.length - 1];
+    const uploadedFilename = urlParts[urlParts.length - 1].split("?")[0];
     const publicBaseUrl = process.env.R2_PUBLIC_BASE_URL as string;
     const imageUrl = `${publicBaseUrl}/${uploadedFilename}`;
     console.log(`Image URL extracted: ${imageUrl}`);
